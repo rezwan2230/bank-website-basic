@@ -1,31 +1,18 @@
 
+document.getElementById('withdrow-btn').addEventListener('click', function () {
 
-document.getElementById('withdrow-btn').addEventListener('click',function(){
-    const withdrawInputField = document.getElementById('withdraw-input')
-    const withdrawAmountString = withdrawInputField.value
-    const CurrentwithdrawAmount = parseFloat(withdrawAmountString)
+    const newwithdrowAmount = getInputFieldValueById('withdraw-input')
+    const previouswithdrowAmount = getInputValueById('withdraw-balance')
+    const currentwithdrowAmount = previouswithdrowAmount + newwithdrowAmount
 
+    const previousAmount = getInputValueById('total-balance')
 
-    const withdrawTotalElement = document.getElementById('withdraw-balance')
-    const withdrawTotalElementString = withdrawTotalElement.innerText
-    const previousWithdrawAmount = parseFloat(withdrawTotalElementString)
-
-    const TotalWithdrawAmount = previousWithdrawAmount + CurrentwithdrawAmount
-
-
-    const totalBalanceElement = document.getElementById('total-balance')
-    const previoustotalBalanceString = totalBalanceElement.innerText
-    const previousTotalBalance = parseFloat(previoustotalBalanceString)
-
-    //step-6: set the balance total
-    if(CurrentwithdrawAmount > previousTotalBalance){
+    if (newwithdrowAmount > previousAmount) {
         alert("Insufficient Balance")
     }
-    else{
-        withdrawTotalElement.innerText = TotalWithdrawAmount
-        totalBalanceElement.innerText = previousTotalBalance - CurrentwithdrawAmount
+    else {
+        setTextElementValueById('withdraw-balance', currentwithdrowAmount)
+        const totalBalance = previousAmount - newwithdrowAmount
+        setTextElementValueById('total-balance', totalBalance)
     }
-    
-
-    withdrawInputField.value = ''
 })

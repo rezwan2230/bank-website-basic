@@ -1,5 +1,4 @@
 
-
 document.getElementById('submit-btn').addEventListener('click',function(){
     
     //get email
@@ -24,8 +23,4 @@ document.getElementById('submit-btn').addEventListener('click',function(){
     else{
         window.location.href = "bank.html"
     }
-
-
-
-    
 })
